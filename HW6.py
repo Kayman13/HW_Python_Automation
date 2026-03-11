@@ -26,13 +26,15 @@ print(delSpaceSecond.lstrip())
 delSpaceThree = " Three Words "
 print(delSpaceThree.strip())
 
-# Имена собственные всегда начинаются с заглавной буквы, за которой следуют строчные буквы. Исправьте данное имя
-# собственное так, чтобы оно соответствовало этому утверждению. "pARiS" >> "Paris"
+# Имена собственные всегда начинаются с заглавной буквы, за которой следуют строчные буквы.
+# Исправьте данное имя собственное так,
+# чтобы оно соответствовало этому утверждению. "pARiS" >> "Paris"
 
 txt = 'pARiS'
 print(txt.capitalize())
 
-# Перевести строку в список "Robin Singh" => ["Robin", "Singh"], "I love arrays they are my favorite" =>
+# Перевести строку в список "Robin Singh" => ["Robin", "Singh"],
+# "I love arrays they are my favorite" =>
 # ["I", "love", "arrays", "they", "are", "my", "favorite"]
 
 messageStr = "Robin Singh"
@@ -57,7 +59,8 @@ msg = ["I", "love", "arrays", "they", "are", "my", "favorite"]
 results = " ".join(msg)
 print(results)
 
-# Создайте список из 10 элементов, вставьте на 3-ю позицию новое значение, удалите элемент из списка под индексом 6
+# Создайте список из 10 элементов, вставьте на 3-ю позицию новое значение,
+# удалите элемент из списка под индексом 6
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 numbers.insert(2, 13)
