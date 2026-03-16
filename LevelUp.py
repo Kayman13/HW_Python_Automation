@@ -1,13 +1,9 @@
 
 experience = 10
 threshold = 15
-reward = 10
+reward = 4
 
 new_lvl = experience + reward
 is_promoted = new_lvl >= threshold
-if is_promoted:
-    result = True
-else:
-    result = False
+result = is_promoted
 print("Reached a new level?", result)
-
