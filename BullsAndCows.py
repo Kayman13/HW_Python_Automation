@@ -11,11 +11,7 @@ def user_guess():
     while True:
         guess = input("Enter 4 digits: ")
 
-        if not guess.isdigit():
-            continue
-        if len(guess) != 4:
-            continue
-        if len(set(guess)) != 4:
+        if not guess.isdigit() and len(guess) != 4 and len(set(guess)) != 4:
             continue
 
         return guess

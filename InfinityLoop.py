@@ -1,17 +1,7 @@
 
-def loop(a, b):
-    steps = 0
-
-    while a != b:
-        a += 1
-        b -= 1
-        steps += 1
-
-        if steps > 10:
-            return True
-
-    return False
+def solution(a, b):
+    return a % 2 != b % 2 or a > b
 
 
-print(loop(2, 6))
-print(loop(2, 3))
+assert solution(5, 100)
+assert not solution(5, 101)
