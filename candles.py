@@ -11,7 +11,6 @@ def solution(candle_number: int, make_new: int) -> int:
     return total
 
 
-# tests
 assert solution(5, 2) == 9
 assert solution(1, 2) == 1
 assert solution(15, 4) == 19

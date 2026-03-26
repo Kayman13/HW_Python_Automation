@@ -1,6 +1,6 @@
 
 def solution(text: str) -> str:
-    stack = []
+    stack: list[str] = []
 
     for char in text:
         if char == "#":
