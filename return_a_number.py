@@ -1,13 +1,9 @@
 
-from functools import wraps
-
-
 def ensure_numeric_result(func):
-    @wraps(func)
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
         if not isinstance(result, (int, float)):
-            print("Ошибка: результат не является числом")
+            raise ValueError("Ошибка: результат не является числом")
         return result
     return wrapper
 
