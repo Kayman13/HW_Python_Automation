@@ -21,9 +21,7 @@ class Card:
 class CardsDeck:
     def __init__(self):
         self.cards: List[Card] = []
-        self._generate_deck()
 
-    def _generate_deck(self):
         for mast in Card.mast_list:
             for number in Card.number_list:
                 self.cards.append(Card(number, mast))
