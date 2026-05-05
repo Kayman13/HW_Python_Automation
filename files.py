@@ -1,13 +1,15 @@
 
+
 import os
 import logging
 from collections import defaultdict
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(levelname)s: %(message)s'
+    format="%(levelname)s: %(message)s",
 )
 logger = logging.getLogger(__name__)
+
 
 def main():
     filename = "students.txt"
@@ -36,13 +38,10 @@ def main():
 
         for line in lines:
             try:
-                line_data = line.strip().split(";")
-                if len(line_data) != 3:
-                    continue
-                _, group, grades = line_data
+                _, group, grades = line.strip().split(";")
                 grades_list = list(map(int, grades.split(",")))
             except ValueError:
-                logger.warning(f"Skipping malformed line: {line.strip()}")
+                logger.warning("Skipping bad line: %s", line.strip())
                 continue
 
             group_count[group] += 1
@@ -53,9 +52,9 @@ def main():
             for group, grades in group_grades.items()
         }
 
-        logger.info(f"Total students: {total_students}")
-        logger.info(f"Students per group: {dict(group_count)}")
-        logger.info(f"Average grade per group: {group_avg}")
+        logger.info("Total students: %s", total_students)
+        logger.info("Students per group: %s", dict(group_count))
+        logger.info("Average grade per group: %s", group_avg)
 
         with open(filename, "a", encoding="utf-8") as f:
             f.write("\n--- Statistics ---\n")
@@ -68,9 +67,8 @@ def main():
     except PermissionError:
         logger.error("Permission denied")
     except ValueError as e:
-        logger.error(f"Validation error: {e}")
-    except Exception as e:
-        logger.exception("An unexpected error occurred")
+        logger.error("%s", e)
+
 
 if __name__ == "__main__":
     main()
