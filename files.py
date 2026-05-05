@@ -1,7 +1,13 @@
 
 import os
+import logging
 from collections import defaultdict
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(levelname)s: %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 def main():
     filename = "students.txt"
@@ -30,9 +36,13 @@ def main():
 
         for line in lines:
             try:
-                _, group, grades = line.strip().split(";")
+                line_data = line.strip().split(";")
+                if len(line_data) != 3:
+                    continue
+                _, group, grades = line_data
                 grades_list = list(map(int, grades.split(",")))
             except ValueError:
+                logger.warning(f"Skipping malformed line: {line.strip()}")
                 continue
 
             group_count[group] += 1
@@ -43,9 +53,9 @@ def main():
             for group, grades in group_grades.items()
         }
 
-        print("Total students:", total_students)
-        print("Students per group:", dict(group_count))
-        print("Average grade per group:", group_avg)
+        logger.info(f"Total students: {total_students}")
+        logger.info(f"Students per group: {dict(group_count)}")
+        logger.info(f"Average grade per group: {group_avg}")
 
         with open(filename, "a", encoding="utf-8") as f:
             f.write("\n--- Statistics ---\n")
@@ -54,12 +64,13 @@ def main():
             f.write(f"Average grade per group: {group_avg}\n")
 
     except FileNotFoundError:
-        print("File not found")
+        logger.error("File not found")
     except PermissionError:
-        print("Permission denied")
+        logger.error("Permission denied")
     except ValueError as e:
-        print(e)
-
+        logger.error(f"Validation error: {e}")
+    except Exception as e:
+        logger.exception("An unexpected error occurred")
 
 if __name__ == "__main__":
     main()
